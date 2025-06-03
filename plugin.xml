@@ -41,7 +41,7 @@
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="$DEEPLINK_SCHEME" />
 				<data android:host="$DEEPLINK_HOST" />
-				<data android:pathPattern="$ANDROID_PATH_PATTERN" />
+				<data android:pathAdvancedPattern="$ANDROID_PATH_PATTERN" />
 			</intent-filter>
 		</config-file>
 
