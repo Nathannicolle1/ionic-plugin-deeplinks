@@ -14,7 +14,7 @@
 
 	<!-- android -->
 	<platform name="android">
-		<preference name="ANDROID_PATH_PREFIX" default="/" />
+		<preference name="ANDROID_PATH_PATTERN" default="/" />
 
 		<js-module src="www/deeplink.js" name="deeplink">
 			<runs/>
@@ -41,7 +41,7 @@
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="$DEEPLINK_SCHEME" />
 				<data android:host="$DEEPLINK_HOST" />
-				<data android:pathPrefix="$ANDROID_PATH_PREFIX" />
+				<data android:pathPrefix="$ANDROID_PATH_PATTERN" />
 			</intent-filter>
 		</config-file>
 
