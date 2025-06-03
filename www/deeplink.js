@@ -1,3 +1,4 @@
+cordova.define("ionic-plugin-deeplinks.deeplink", function(require, exports, module) {
 var argscheck = require('cordova/argscheck'),
   utils = require('cordova/utils'),
   exec = require('cordova/exec');
@@ -47,13 +48,12 @@ var IonicDeeplink = {
       var finalArgs;
       var pathData;
 
-      console.log(realPath);
-      console.log(paths);
-
       for (var targetPath in paths) {
         pathData = paths[targetPath];
 
-        var matchedParams = self.routeMatch(targetPath, realPath);
+		var typeRoute = (pathData.type == "regex" ? "regex" : "default");
+
+        var matchedParams = self.routeMatch(pathData.value, realPath, typeRoute);
 
         if (matchedParams !== false) {
           matched = true;
@@ -122,41 +122,51 @@ var IonicDeeplink = {
   /**
    * Check if the path matches the route.
    */
-  routeMatch: function (route, path) {
-    if (route === path) {
-      return {};
-    }
+  routeMatch: function (route, path, typeRoute) {
+	if(typeRoute === "regex") {
+		var match_regex_route = path.match(route);
 
-    var parts = path.split('/');
-    var routeParts = route.split('/');
+		if (!match_regex_route) return false;
 
-    // Our aggregated route params that matched our route path.
-    // This is used for things like /post/:id
-    var routeParams = {};
+		return {
+			id: match_regex_route[1],       // identifiant de l'article
+		};
+	} else {
+		if (route === path) {
+			return {};
+		}
 
-    if (parts.length !== routeParts.length) {
-      // Can't possibly match if the lengths are different
-      return false;
-    }
+		var parts = path.split('/');
+		var routeParts = route.split('/');
 
-    // Otherwise, we need to check each part
+		// Our aggregated route params that matched our route path.
+		// This is used for things like /post/:id
+		var routeParams = {};
 
-    var rp,
-      pp;
+		if (parts.length !== routeParts.length) {
+		// Can't possibly match if the lengths are different
+		return false;
+		}
 
-    for (var i = 0; i < parts.length; i++) {
-      pp = parts[i];
-      rp = routeParts[i];
+		// Otherwise, we need to check each part
 
-      if (rp[0] == ':') {
-        // We have a route param, store it in our
-        // route params without the colon
-        routeParams[rp.slice(1)] = pp;
-      } else if (pp !== rp) {
-        return false;
-      }
-    }
-    return routeParams;
+		var rp,
+		pp;
+
+		for (var i = 0; i < parts.length; i++) {
+		pp = parts[i];
+		rp = routeParts[i];
+
+		if (rp[0] == ':') {
+			// We have a route param, store it in our
+			// route params without the colon
+			routeParams[rp.slice(1)] = pp;
+		} else if (pp !== rp) {
+			return false;
+		}
+		}
+		return routeParams;
+	}
   },
 
   _queryToObject: function (q) {
@@ -273,3 +283,5 @@ var IonicDeeplink = {
 };
 
 module.exports = IonicDeeplink;
+
+});
