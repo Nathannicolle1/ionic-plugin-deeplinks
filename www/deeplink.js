@@ -55,14 +55,14 @@ var IonicDeeplink = {
         alert(targetPath);
         pathData = paths[targetPath];
 
-		var typeRoute = (pathData.type == "regex" ? "regex" : "default");
+        var typeRoute = (pathData.type == "regex" ? "regex" : "default");
 
         alert("pathData (3) :");
         alert(JSON.stringify(pathData));
 
         var matchedParams = self.routeMatch(pathData.value, realPath, typeRoute);
-        /*alert("matchedParams :");
-        alert(JSON.stringify(matchedParams));*/
+        alert("self.routeMatch params [pathData.value, realPath, typeRoute] (4) :");
+        alert(JSON.stringify([pathData.value, realPath, typeRoute]));
 
         if (matchedParams !== false) {
           matched = true;
