@@ -53,7 +53,7 @@ var IonicDeeplink = {
 		var typeRoute = (pathData.type == "regex" ? "regex" : "default");
 
         alert("pathData :");
-        alert(pathData);
+        alert(JSON.stringify(pathData));
 
         var matchedParams = self.routeMatch(pathData.value, realPath, typeRoute);
         alert("matchedParams :");
@@ -69,6 +69,8 @@ var IonicDeeplink = {
 
       if (matched === true) {
         console.log('Match found', realPath);
+        alert('Match found : ');
+        alert(realPath);
 
         if (typeof (success) === 'function') {
           success({
@@ -83,6 +85,7 @@ var IonicDeeplink = {
 
       if (typeof (error) === 'function') {
         console.log('No Match found');
+        alert('No Match found');
         error({ $link: data });
       }
     })
