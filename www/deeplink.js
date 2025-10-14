@@ -47,17 +47,22 @@ var IonicDeeplink = {
       var finalArgs;
       var pathData;
 
+      alert("paths (1) :");
+      alert(paths);
+
       for (var targetPath in paths) {
+        alert("targetPath (2) : ");
+        alert(targetPath);
         pathData = paths[targetPath];
 
 		var typeRoute = (pathData.type == "regex" ? "regex" : "default");
 
-        alert("pathData :");
+        alert("pathData (3) :");
         alert(JSON.stringify(pathData));
 
         var matchedParams = self.routeMatch(pathData.value, realPath, typeRoute);
-        alert("matchedParams :");
-        alert(JSON.stringify(matchedParams));
+        /*alert("matchedParams :");
+        alert(JSON.stringify(matchedParams));*/
 
         if (matchedParams !== false) {
           matched = true;
@@ -69,8 +74,8 @@ var IonicDeeplink = {
 
       if (matched === true) {
         console.log('Match found', realPath);
-        alert('Match found : ');
-        alert(realPath);
+        // alert('Match found : ');
+        // alert(realPath);
 
         if (typeof (success) === 'function') {
           success({
@@ -85,7 +90,7 @@ var IonicDeeplink = {
 
       if (typeof (error) === 'function') {
         console.log('No Match found');
-        alert('No Match found');
+        // alert('No Match found');
         error({ $link: data });
       }
     })
@@ -132,11 +137,11 @@ var IonicDeeplink = {
   routeMatch: function (route, path, typeRoute) {
 	if(typeRoute === "regex") {
 		var match_regex_route = path.match(route);
-    alert("match_regex_route :");
-    alert(match_regex_route);
+    // alert("match_regex_route :");
+    // alert(match_regex_route);
 
-    alert("match_regex_route[1] :");
-    alert(match_regex_route[1]);
+    // alert("match_regex_route[1] :");
+    // alert(match_regex_route[1]);
 
 		if (!match_regex_route) return false;
 
