@@ -48,7 +48,7 @@ var IonicDeeplink = {
       var pathData;
 
       alert("paths (1) :");
-      alert(paths);
+      alert(JSON.stringify(paths));
 
       for (var targetPath in paths) {
         alert("targetPath (2) : ");
