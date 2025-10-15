@@ -137,8 +137,8 @@ var IonicDeeplink = {
   routeMatch: function (route, path, typeRoute) {
 	if(typeRoute === "regex") {
 		var match_regex_route = path.match(route);
-    // alert("match_regex_route :");
-    // alert(match_regex_route);
+    alert("match_regex_route (5) :");
+    alert(JSON.stringify(match_regex_route));
 
     // alert("match_regex_route[1] :");
     // alert(match_regex_route[1]);
