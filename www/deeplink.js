@@ -140,8 +140,11 @@ var IonicDeeplink = {
     alert("match_regex_route (5) :");
     alert(JSON.stringify(match_regex_route));
 
-    // alert("match_regex_route[1] :");
-    // alert(match_regex_route[1]);
+    alert("match_regex_route[0] (6) :");
+    alert(JSON.stringify(match_regex_route[0]));
+
+    alert("match_regex_route[1] (7) :");
+    alert(JSON.stringify(match_regex_route[1]));
 
 		if (!match_regex_route) return false;
 
