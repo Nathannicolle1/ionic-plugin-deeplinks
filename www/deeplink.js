@@ -140,12 +140,12 @@ var IonicDeeplink = {
     alert("match_regex_route (5) :");
     alert(JSON.stringify(match_regex_route));
 
-    if(typeof match_regex_route[0] !== "undefined") {
+    if(typeof match_regex_route[0] !== "undefined" && match_regex_route[0] !== null && match_regex_route[0] != "") {
       alert("match_regex_route[0] (6) :");
       alert(JSON.stringify(match_regex_route[0]));
     }
 
-    if(typeof match_regex_route[1] !== "undefined") {
+    if(typeof match_regex_route[1] !== "undefined" && match_regex_route[1] !== null && match_regex_route[1] != "") {
       alert("match_regex_route[1] (7) :");
       alert(JSON.stringify(match_regex_route[1]));
     }
