@@ -124,8 +124,16 @@ var IonicDeeplink = {
   routeMatch: function (route, path, typeRoute) {
 	if(typeRoute === "regex") {
 		var match_regex_route = path.match(route);
+    var argsList = [];
 
 		if (!match_regex_route) return false;
+
+    for(let i = 1; i < match_regex_route.length; i++) {
+      argsList.push(match_regex_route[i]);
+    }
+
+    alert("argsList :");
+    alert(argsList);
 
 		return {
 			id: match_regex_route[1],       // identifiant de l'article
