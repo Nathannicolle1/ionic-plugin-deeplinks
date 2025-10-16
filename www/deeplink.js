@@ -132,11 +132,8 @@ var IonicDeeplink = {
       argsList.push(match_regex_route[i]);
     }
 
-    alert("argsList :");
-    alert(argsList);
-
 		return {
-			id: match_regex_route[1],       // identifiant de l'article
+			params: argsList,       // paramètre(s) (identifiant, rewrite...) contenus dans le(s) groupe(s) capturant du path
 		};
 	} else {
 		if (route === path) {
