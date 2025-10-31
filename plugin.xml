@@ -18,6 +18,7 @@
 		<preference name="ANDROID_2_PATH_PREFIX" default="/" />
 		<preference name="ANDROID_3_PATH_PREFIX" default="/" />
 		<preference name="ANDROID_4_PATH_PREFIX" default="/" />
+		<preference name="ANDROID_5_PATH_PREFIX" default="/" />
 
 		<preference name="DEEPLINK_2_SCHEME" default=" " />
 		<preference name="DEEPLINK_2_HOST" default=" " />
@@ -78,6 +79,14 @@
 				<data android:scheme="$DEEPLINK_4_SCHEME" />
 				<data android:host="$DEEPLINK_4_HOST" />
 				<data android:pathPrefix="$ANDROID_4_PATH_PREFIX" />
+			</intent-filter>
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="$DEEPLINK_5_SCHEME" />
+				<data android:host="$DEEPLINK_5_HOST" />
+				<data android:pathPrefix="$ANDROID_5_PATH_PREFIX" />
 			</intent-filter>
 		</config-file>
 
